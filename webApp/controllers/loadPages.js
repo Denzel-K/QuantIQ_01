@@ -116,7 +116,7 @@ module.exports.files = (req, res) => {
   const { _id, companyName, companyEmail, databaseName } = req.user;
 
   res.render('files', { 
-    pageTitle: "Files",
+    pageTitle: "Documents",
     clientCredentials: {
       id: _id,
       companyName,
@@ -140,11 +140,11 @@ module.exports.settings = (req, res) => {
   });
 };
 
-module.exports.sales_analytics = (req, res) => {
+module.exports.analytics = (req, res) => {
   const { _id, companyName, companyEmail, databaseName } = req.user;
 
-  res.render('sales_analytics', { 
-    pageTitle: "Sales Analytics",
+  res.render('analytics', { 
+    pageTitle: "Analytics",
     clientCredentials: {
       id: _id,
       companyName,

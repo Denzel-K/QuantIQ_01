@@ -66,7 +66,8 @@ exports.registerClient = async (req, res) => {
       message: "Client registered successfully with default collections",
       client: { id: client._id, firstname, lastname, email, companyname, databaseName }
     });
-  } catch (error) {
+  } 
+  catch (error) {
     res.status(500).json({ error: error.message });
   }
 };
@@ -143,7 +144,8 @@ exports.createCustomCollection = async (req, res) => {
     const CustomCollection = db.model(collectionName, collectionSchema);
 
     res.status(201).json({ message: `Collection ${collectionName} created successfully` });
-  } catch (error) {
+  } 
+  catch (error) {
     res.status(500).json({ error: error.message });
   }
 };

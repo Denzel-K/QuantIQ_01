@@ -37,7 +37,7 @@ router.get ("/sentiment_analysis", verifyToken, loadPages.sentiment_analysis);
 router.get ("/account_management", verifyToken, loadPages.account_management);
 router.get ("/files", verifyToken, loadPages.files);
 router.get ("/settings", verifyToken, loadPages.settings);
-router.get ("/sales_analytics", verifyToken, loadPages.sales_analytics);
+router.get ("/analytics", verifyToken, loadPages.analytics);
 
 // File management routes
 router.post('/upload', jsonParser, fileController.upload.array('files', 10), fileController.uploadFiles);

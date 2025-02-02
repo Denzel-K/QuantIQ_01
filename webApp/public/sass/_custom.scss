@@ -1,0 +1,150 @@
+//@use 'variables';
+
+.custom-container {
+  background: rgb(248, 248, 248);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  max-width: 560px;
+  width: 100%;
+
+  @media(max-width: 600px){
+    width: 95%;
+  }
+
+  h2{
+    opacity: .8;
+    font-size: 1rem; 
+    font-weight: 700; 
+  }
+
+
+  label {
+    display: block;
+    font-weight: 600;
+    font-size: 14px;
+    margin: 1.5rem 0 10px 5px;
+    opacity: .75;
+  }
+
+  .coll_name {
+    width: 100%;
+    padding: 8px;
+    margin-top: 1.5rem;
+    border: 1px solid #ebebeb;
+    border-radius: 4px;
+  }
+
+  .field_sect{
+    margin-top: 1.75rem;
+    padding: .65rem .45rem;
+    border: 1.6px solid #ccc;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    h3{
+      font-size: 1rem;
+      opacity: .75;
+      font-weight: 600;
+      text-align: left;
+      width: 100%;
+    }
+
+    .field-group {
+      display: grid;
+      grid-template-columns: 1fr 1fr 20px;
+      gap: 8px;
+      width: 100%;
+      margin-top: .7rem;
+      height: 36px;
+      padding: 0 .25rem;
+  
+      input{
+        padding: 5px 8px;
+        border: 1px solid #ebebeb;
+        border-radius: 4px;
+        height: 100%;
+      }
+  
+      select {
+        height: 100%;
+        padding: 5px 8px;
+        margin-bottom: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+      }
+  
+      .remove-btn {
+        background-color: #f72b4d;
+        color: white;
+        border: none;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: 700;
+        border-radius: 4px;
+        width: 26px;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: .25s ease;
+      }
+    
+      .remove-btn:hover {
+        background-color: rgb(219, 14, 48);
+      }  
+    }
+  
+    #addFieldBtn{
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      width: fit-content;
+      padding: .5rem 1rem;
+      margin-top: 2rem;
+      margin-bottom: -2rem;
+      border: none;
+      border-radius: 4px;
+      background-color: #007bff;
+      cursor: pointer;
+
+      img{
+        width: 24px;
+      }
+      span{
+        color: white;
+        font-size: 16px;
+      }
+    }
+  }
+
+  #createCollectionBtn{
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-top: 3rem;
+    border: none;
+    border-radius: 4px;
+    background-color: #0dca8e;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    transition: .25s ease;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #4dd5b3;
+      color: rgb(29, 28, 28);
+    }
+  }
+  
+  #responseMessage {
+    margin-top: 15px;
+    text-align: center;
+    font-weight: bold;
+  }
+}

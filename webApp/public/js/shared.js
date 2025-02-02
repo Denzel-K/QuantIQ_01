@@ -17,7 +17,7 @@ dropdownBtn.addEventListener("click", () => {
 
 
 // Reusable file upload modal
-const modal = document.getElementById('data-ingestion-modal');
+const fileModal = document.getElementById('data-ingestion-modal');
 const openModalBtn = document.getElementById('open-modal-btn');
 const fileInput = document.getElementById('file-input');
 const uploadArea = document.getElementById('upload-area');
@@ -27,11 +27,11 @@ const dynamic_upload_state = document.querySelector('.dynamic_upload_state');
 openModalBtn.addEventListener('click', openModal);
 
 function openModal() {
-  modal.showModal();
+  fileModal.showModal();
 }
 
 function closeModal() {
-  modal.close();
+  fileModal.close();
 }
 
 // Reset functionality

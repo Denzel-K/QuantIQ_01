@@ -63,11 +63,13 @@ app.use(authRoutes);
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI)
-  .then(() => console.log("MongoDB Connected :)"))
+  .then(() => {
+    console.log("MongoDB Connected :)");
+
+    const PORT = process.env.PORT || 5000;
+    app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
+  })
   .catch(err => console.log(err));
 
 // Serve uploaded files statically
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
-
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
