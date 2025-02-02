@@ -1,0 +1,14 @@
+<section class="skeleton">
+  {{>sidebar}}
+
+  <section class="parent_container">
+    {{>dynamic_head}}
+
+    <div class="dynamic_body">
+      <button id="open-modal-btn" style="border: 2px solid rgb(27, 245, 179); color: rgb(6, 59, 59); padding: .5rem 10px; border-radius: 10px;">Upload Data</button>
+      {{>data_ingestion}}
+    </div>
+  </section>
+</section>
+
+<script src="js/shared.js"></script>
