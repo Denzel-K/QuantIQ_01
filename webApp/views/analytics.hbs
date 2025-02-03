@@ -6,11 +6,12 @@
 
     <div class="dynamic_body">
       {{!-- Your sections and divs go here --}}
+      <button id="open-customize-btn" style="border: 2px solid rgb(27, 245, 179); color: rgb(6, 59, 59); padding: .5rem 10px; border-radius: 10px;">Create collection</button>
 
-      <div class="custom-container">
+      <dialog class="custom-container">
         <div class="modal-header ">
           <h2>Create a Custom Collection</h2>
-          <button class="close-btn" onclick="closeCustomizeModal()">
+          <button class="close-btn" id="close-customize-btn">
             <img src="assets/icons/close-circle.svg" alt="close-circle">
           </button>
         </div>
@@ -21,30 +22,18 @@
         <section class="field_sect">
           <h3>Fields</h3>
           <div id="fieldsContainer">
+            <div id="dynamic_fields">
               <!-- Dynamic Fields will be added here -->
-              <div class="field-group">
-                <input type="text" placeholder="Field Name">
-                <select>
-                  <option value="String">String</option>
-                  <option value="Number">Number</option>
-                  <option value="Boolean">Boolean</option>
-                  <option value="Date">Date</option>
-                  <option value="Object">Object</option>
-                </select>
-                <button class="remove-btn">X</button>
-              </div>
+            </div>
 
-              <div class="field-group">
-                <input type="text" placeholder="Field Name">
-                <select>
-                  <option value="String">String</option>
-                  <option value="Number">Number</option>
-                  <option value="Boolean">Boolean</option>
-                  <option value="Date">Date</option>
-                  <option value="Object">Object</option>
-                </select>
-                <button class="remove-btn">X</button>
-              </div>
+            <div id="fields_explained">
+              <p>Add fields to define the structure of your collection. For example:</p>
+              <ul>
+                <li>Field Name: <strong>title</strong>, Type: <strong>String</strong></li>
+                <li>Field Name: <strong>price</strong>, Type: <strong>Number</strong></li>
+                <li>Field Name: <strong>isAvailable</strong>, Type: <strong>Boolean</strong></li>
+              </ul>
+            </div>
           </div>
 
           <button id="addFieldBtn">
@@ -56,32 +45,47 @@
         <button id="createCollectionBtn">Create Collection</button>
 
         <div id="responseMessage"></div>
-      </div>
+      </dialog>
     </div>
   </section>
 </section>
 
-<script src="js/shared.js"></script>
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     // Modal action
     const customizeModal = document.querySelector('.custom-container');
-    
-    function openCustomizeModal() {
-      customizeModal.showModal();
-    }
+    const openCustomizer = document.querySelector('#open-customize-btn');
+    const closeCustomizer = document.querySelector('#close-customize-btn');
 
-    function closeCustomizeModal() {
+    openCustomizer.addEventListener('click', () => {
+      customizeModal.showModal();
+    })
+    closeCustomizer.addEventListener('click', () => {
       customizeModal.close();
-    }
+    })
 
     const addFieldBtn = document.getElementById("addFieldBtn");
-    const fieldsContainer = document.getElementById("fieldsContainer");
+    const dynamicFields = document.getElementById("dynamic_fields");
+    const fieldsExplained = document.getElementById("fields_explained");
     const createCollectionBtn = document.getElementById("createCollectionBtn");
     const responseMessage = document.getElementById("responseMessage");
 
     // Field options
     const fieldTypes = ["String", "Number", "Boolean", "Date", "Object"];
+
+    // Function to toggle visibility of fields_explained and dynamic_fields
+    function toggleFieldsVisibility() {
+      if (dynamicFields.children.length === 0) {
+        fieldsExplained.style.display = "block";
+        dynamicFields.style.display = "none";
+      } else {
+        fieldsExplained.style.display = "none";
+        dynamicFields.style.display = "block";
+      }
+    }
+
+    // Initial visibility check
+    toggleFieldsVisibility();
 
     // Add a new field dynamically
     addFieldBtn.addEventListener("click", function () {
@@ -102,6 +106,7 @@
         option.textContent = type;
         fieldType.appendChild(option);
       });
+
       fieldGroup.appendChild(fieldType);
 
       // Remove button
@@ -109,11 +114,15 @@
       removeBtn.textContent = "X";
       removeBtn.classList.add("remove-btn");
       removeBtn.addEventListener("click", function () {
-        fieldsContainer.removeChild(fieldGroup);
+        dynamicFields.removeChild(fieldGroup);
+        toggleFieldsVisibility();
       });
 
       fieldGroup.appendChild(removeBtn);
-      fieldsContainer.appendChild(fieldGroup);
+      dynamicFields.appendChild(fieldGroup);
+
+      // Update visibility
+      toggleFieldsVisibility();
     });
 
     // Handle Create Collection
@@ -147,9 +156,12 @@
 
         const data = await res.json();
         responseMessage.textContent = data.message || "Collection created successfully!";
-      } catch (error) {
+      } 
+      catch (error) {
+        console.log(error);
         responseMessage.textContent = "Error creating collection!";
       }
     });
   });
 </script>
+<script src="js/shared.js"></script>

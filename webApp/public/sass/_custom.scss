@@ -1,4 +1,25 @@
 //@use 'variables';
+/* Fade-in animation for dialog */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Fade-in animation for backdrop */
+@keyframes backdropFade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 
 .custom-container {
   background: rgb(248, 248, 248);
@@ -7,6 +28,8 @@
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   max-width: 560px;
   width: 100%;
+  animation: fadeIn 0.3s ease;
+  margin: auto;
 
   @media(max-width: 600px){
     width: 95%;
@@ -51,6 +74,33 @@
       font-weight: 600;
       text-align: left;
       width: 100%;
+    }
+
+    #fields_explained {
+      display: none; /* Hidden by default */
+      text-align: center;
+      color: #666;
+      font-size: 14px;
+      padding: 10px;
+      border: 1px dashed #b9b8b8;
+      background-color: #f9f9f9;
+      border-radius: 6px;
+      width: 100%;
+      margin-top: 1rem;
+    }
+    
+    #fields_explained p {
+      margin: 0;
+    }
+    
+    #fields_explained ul {
+      margin: 10px 0 0 0;
+      padding: 0;
+      list-style: none;
+    }
+    
+    #fields_explained li {
+      margin: 5px 0;
     }
 
     .field-group {
@@ -104,20 +154,51 @@
       align-items: center;
       justify-content: center;
       width: fit-content;
-      padding: .5rem 1rem;
+      padding: .5rem .65rem;
       margin-top: 2rem;
       margin-bottom: -2rem;
       border: none;
       border-radius: 4px;
-      background-color: #007bff;
+      background-color: #ebf2f7;
+      border: 2px solid gray;
       cursor: pointer;
+      transition: .25s ease;
 
       img{
         width: 24px;
+        opacity: .75;
+        transition: .25s ease;
+
+        @media(max-width: 600px){
+          width: 22px;
+        }
       }
       span{
-        color: white;
+        color: rgb(31, 30, 30);
+        transition: .25s ease;
         font-size: 16px;
+        font-weight: 600;
+        margin-left: .8rem;
+        margin-bottom: -2px;
+
+        @media(max-width: 600px){
+          font-size: 14px;
+        }
+        @media(max-width: 330px){
+          font-size: 12px;
+        }
+      }
+
+      &:hover{
+        background-color: #cbd3da;
+        border: 2px solid #190c3b;
+
+        img{
+          opacity: 1;
+        }
+        span{ 
+          color: black;
+        }
       }
     }
   }
@@ -129,7 +210,7 @@
     margin-top: 3rem;
     border: none;
     border-radius: 4px;
-    background-color: #0dca8e;
+    background-color: #12c47a;
     color: white;
     font-size: 16px;
     font-weight: 600;
@@ -137,7 +218,7 @@
     cursor: pointer;
 
     &:hover {
-      background-color: #4dd5b3;
+      background-color: #0dca8e;
       color: rgb(29, 28, 28);
     }
   }
@@ -146,5 +227,11 @@
     margin-top: 15px;
     text-align: center;
     font-weight: bold;
+  }
+
+  &::backdrop {
+    background: rgba(0, 0, 0, 0.5); 
+    backdrop-filter: blur(2px);
+    animation: backdropFade 0.3s ease;
   }
 }
