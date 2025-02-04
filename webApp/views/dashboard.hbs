@@ -10,65 +10,66 @@
       <div class="p-4">
 
         <div class="flex flex-col w-full">
+
           <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 md:grid-cols-2 gap-2">
-              <div class="h-32 rounded-lg bg-white shadow-md w-full sm:w-auto bg-purple-00">
-                <div class="w-32">
-                  <h3 class="text-md font-semibold p-1.5">Total Orders</h3>
-                </div>
-                <div class="">
-                  <p class="pl-2.5 text-3xl font-bold">5,399</p>
-                </div>
-                <div class="flex flex-row gap-4 mt-2">
+            <div class="h-32 rounded-lg bg-white shadow-md w-full sm:w-auto bg-purple-00">
+              <div class="w-32">
+                <h3 class="text-md font-semibold p-1.5">Total Orders</h3>
+              </div>
+              <div class="">
+                <p class="pl-2.5 text-3xl font-bold">5,399</p>
+              </div>
+              <div class="flex flex-row gap-4 mt-2">
+              <img src="assets/icons/up.png" alt="reset" class="w-8">
+              <p class="font-semibold">0.5% vs last month</p>
+              </div>
+            </div>
+
+            <div class="h-32 rounded-lg bg-white w-full sm:w-auto bg-purple-00">
+              <div class="w-full">
+                <h3 class="text-md font-semibold p-1.5">Total Sales</h3>
+              </div>
+              <p class="pl-2.5 text-3xl font-bold">5,250</p>
+              <div class="flex flex-row gap-4 mt-2">
+                <img src="assets/icons/decrease.png" alt="reset" class="w-6">
+                <p class="font-semibold">0.2% vs last month</p>
+              </div>
+
+            </div>
+
+            <div class="h-32 rounded-lg bg-white shadow-md w-full md:w-full sm:w-auto bg-purple-00">
+              <div>
+                <h3 class="text-md font-semibold p-1.5">Net Revenue</h3>
+              </div>
+              <div>
+                <p class="pl-2.5 text-3xl font-bold">$3500</p>
+              </div>
+              <div class="flex flex-row gap-4 mt-2">
                 <img src="assets/icons/up.png" alt="reset" class="w-8">
-                <p class="font-semibold">0.5% vs last month</p>
-                </div>
+                <p class="font-semibold">12% vs last month</p>
               </div>
+            </div>
 
-              <div class="h-32 rounded-lg bg-white w-full sm:w-auto bg-purple-00">
-                <div class="w-full">
-                  <h3 class="text-md font-semibold p-1.5">Total Sales</h3>
-                </div>
-                <p class="pl-2.5 text-3xl font-bold">5,250</p>
-                <div class="flex flex-row gap-4 mt-2">
-                  <img src="assets/icons/decrease.png" alt="reset" class="w-6">
-                  <p class="font-semibold">0.2% vs last month</p>
-                </div>
-
+            <div class="h-32 rounded-lg bg-white shadow-md w-full md:w-full sm:w-auto bg-purple-00">
+              <div>
+                <h3 class="text-md font-semibold p-1.5">New Orders</h3>
               </div>
-
-              <div class="h-32 rounded-lg bg-white shadow-md w-full md:w-full sm:w-auto bg-purple-00">
-                <div>
-                  <h3 class="text-md font-semibold p-1.5">Net Revenue</h3>
-                </div>
-                <div>
-                  <p class="pl-2.5 text-3xl font-bold">$3500</p>
-                </div>
-                <div class="flex flex-row gap-4 mt-2">
-                  <img src="assets/icons/up.png" alt="reset" class="w-8">
-                  <p class="font-semibold">12% vs last month</p>
-                </div>
+              <div>
+                <p class="pl-2.5 text-3xl font-bold">45</p>
               </div>
-
-              <div class="h-32 rounded-lg bg-white shadow-md w-full md:w-full sm:w-auto bg-purple-00">
-                <div>
-                  <h3 class="text-md font-semibold p-1.5">New Orders</h3>
-                </div>
-                <div>
-                  <p class="pl-2.5 text-3xl font-bold">45</p>
-                </div>
-                <div class="flex flex-row gap-4 mt-2">
-                  <img src="assets/icons/up.png" alt="reset" class="w-8">
-                  <p class="font-semibold">0.2% vs last month</p>
-                </div>
+              <div class="flex flex-row gap-4 mt-2">
+                <img src="assets/icons/up.png" alt="reset" class="w-8">
+                <p class="font-semibold">0.2% vs last month</p>
               </div>
+            </div>
           </div>
 
           <div class="flex flex-col md:flex-row gap-4 mt-4 lg:flex-row">
-            <div class=" w-full md:w-7/12 h-64">
+            {{!-- <div class=" w-full md:w-7/12 h-64">
               <img src="assets/barchart.png" class="h-64 w-full" alt="">
-            </div>
+            </div> --}}
 
-            <div class="flex flex-col gap-3 w-full md:w-5/12 lg:w-5/12 h-64">
+            {{!-- <div class="flex flex-col gap-3 w-full md:w-5/12 lg:w-5/12 h-64">
               <div class="flex flex-row h-1/2 gap-3">
                 <div class="w-7/12 flex flex-col bg-white">
                   <img src="assets/icons/group.png" alt="reset" class="w-12 pl-4">
@@ -81,6 +82,35 @@
 
               <div class="w-full h-1/2">
                 <img src="assets/linechart.png" alt="reset" class="w-full h-full pl-4 pt-2 pr-4 bg-purple-00">
+              </div>
+            </div> --}}
+            <div class = "border-2 border-black rounded-md w-full h-full">
+              <h2>Collections</h2>
+
+              <div class="default_colls">
+                <div class="def_coll coll-1">
+                  Customers
+                </div>
+
+                <div class="def_coll coll-2">
+                  Inventory
+                </div>
+
+                <div class="def_coll coll-3">
+                  Orders
+                </div>
+
+                <div class="def_coll coll-4">
+                  Sales
+                </div>
+
+                <div class="def_coll coll-5">
+                  Products
+                </div>
+
+                <div class="def_coll coll-6">
+                  Employees
+                </div>
               </div>
             </div>
           </div>
@@ -161,6 +191,7 @@
             </div>
           </div>
         </div>
+        
       </div>
     </div>
   </section>
