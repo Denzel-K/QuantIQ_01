@@ -968,4 +968,85 @@ body {
   backdrop-filter: blur(2px);
   animation: backdropFade 0.3s ease;
 }
+
+.collection_widget {
+  display: flex;
+  justify-content: start;
+  align-items: start;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  padding: 0.8rem 0.45rem;
+}
+.collection_widget .collections_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  width: 100%;
+}
+.collection_widget .collections_header h2 {
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: rgb(100, 98, 98);
+  opacity: 0.75;
+  text-align: left;
+}
+.collection_widget .collections_header button {
+  width: 32px;
+}
+.collection_widget .collections_header button img {
+  transition: 0.25s ease;
+  width: 100%;
+}
+.collection_widget .collections_header button:hover img {
+  scale: 1.15;
+}
+.collection_widget .default_colls {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 100px));
+  gap: 1.15rem;
+  margin-top: 1rem;
+  width: 100%;
+}
+.collection_widget .default_colls .def_coll {
+  border-radius: 4px;
+  background-color: rgb(239, 242, 243);
+  padding: 1.2rem 1.15rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  box-shadow: 0 4px 8px 4px rgb(228, 227, 227);
+}
+.collection_widget .default_colls .def_coll span:nth-child(1) {
+  width: 48px;
+}
+.collection_widget .default_colls .def_coll span:nth-child(1) img {
+  width: 100%;
+  opacity: 0.65;
+  transition: 0.25s ease;
+}
+.collection_widget .default_colls .def_coll span:nth-child(2) {
+  margin-top: 0.65rem;
+  font-size: 14px;
+  font-weight: 600;
+  opacity: 0.7;
+  transition: 0.25s ease;
+}
+@media (max-width: 600px) {
+  .collection_widget .default_colls .def_coll span:nth-child(2) {
+    font-size: 12px;
+  }
+}
+.collection_widget .default_colls .def_coll:hover {
+  cursor: pointer;
+}
+.collection_widget .default_colls .def_coll:hover span:nth-child(1) img {
+  opacity: 0.85;
+}
+.collection_widget .default_colls .def_coll:hover span:nth-child(2) {
+  opacity: 0.9;
+}
 /*# sourceMappingURL=main.css.map */

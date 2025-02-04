@@ -1,0 +1,102 @@
+@mixin flexbox($justify: center, $align: center, $direction: row, $wrap: nowrap) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+  flex-direction: $direction;
+  flex-wrap: $wrap;
+}
+
+// Grid Mixin
+@mixin grid($columns: 1fr, $rows: auto, $gap: 0, $align: start, $justify: start) {
+  display: grid;
+  grid-template-columns: $columns;
+  grid-template-rows: $rows;
+  gap: $gap;
+  align-items: $align;
+  justify-items: $justify;
+}
+
+.collection_widget {
+  @include flexbox(start, start, column);
+  padding: .8rem .45rem;
+
+  .collections_header{
+    @include flexbox(space-between, center, row);
+    width: 100%;
+
+    h2{
+      font-size: 1.35rem;
+      font-weight:  600;
+      color: rgb(100, 98, 98);
+      opacity: .75;
+      text-align: left;
+    }
+    
+    button{
+      width: 32px;
+
+      img{
+        transition: .25s ease;
+        width: 100%;
+      }
+
+      &:hover{
+        img{
+          scale: 1.15;
+        }
+      }
+
+    }
+  }
+
+  .default_colls{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 100px));
+    gap: 1.15rem;
+    margin-top: 1rem;
+    width: 100%;
+
+    .def_coll{
+      border-radius: 4px;
+      background-color: rgb(239, 242, 243);
+      padding: 1.2rem 1.15rem;
+      @include flexbox(center, center, column);
+      box-shadow: 0 4px 8px 4px rgb(228, 227, 227);
+
+      span:nth-child(1){
+        width: 48px;
+
+        img{
+          width: 100%;
+          opacity: .65;
+          transition: .25s ease;
+        }
+      }
+
+      span:nth-child(2){
+        margin-top: .65rem;
+        font-size: 14px; 
+        font-weight: 600;
+        opacity: .7;
+        transition: .25s ease;
+
+        @media(max-width: 600px){
+          font-size: 12px;
+        }
+      }
+
+      &:hover{
+        cursor: pointer;
+
+        span:nth-child(1){
+          img{
+            opacity: .85;
+          }
+        }
+        span:nth-child(2){
+          opacity: .9
+        }
+      }
+    }
+  }
+}
