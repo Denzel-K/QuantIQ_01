@@ -126,6 +126,20 @@ module.exports.files = (req, res) => {
   });
 };
 
+module.exports.collections = (req, res) => {
+  const { _id, companyName, companyEmail, databaseName } = req.user;
+
+  res.render('collections', { 
+    pageTitle: "Collections",
+    clientCredentials: {
+      id: _id,
+      companyName,
+      companyEmail,
+      databaseName
+    }
+  });
+};
+
 module.exports.settings = (req, res) => {
   const { _id, companyName, companyEmail, databaseName } = req.user;
 

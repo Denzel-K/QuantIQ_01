@@ -56,7 +56,6 @@ app.set('views', path.join(__dirname, 'views'));
 
 app.use("/ai", aiRoutes);  // Add AI routes
 
-
 // Middleware
 app.use(morgan("dev"));
 app.use(cors());

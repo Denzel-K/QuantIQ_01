@@ -1,0 +1,231 @@
+<section class="skeleton">
+  {{>sidebar}}
+
+  <section class="parent_container">
+    {{>dynamic_head}}
+
+    <div class="dynamic_body">
+      {{!-- Your sections and divs go here --}}
+      <div class = "collection_widget rounded-md">
+        <div class="collections_header">
+          <h2>My Collections</h2>
+
+          <button id="open-customize-btn">
+            <img src="assets/icons/create-collection.svg" alt="create-collection">
+          </button>
+        </div>
+
+        <div class="default_colls">
+          <div class="def_coll coll-1">
+            <span>
+              <img src="assets/icons/single-collection.svg" alt="single-collection" />
+            </span>
+            <span>
+              Customers
+            </span>                 
+          </div>
+
+          <div class="def_coll coll-2">
+            <span>
+              <img src="assets/icons/single-collection.svg" alt="single-collection" />
+            </span>
+            <span>
+              Inventory
+            </span> 
+          </div>
+
+          <div class="def_coll coll-3">
+            <span>
+              <img src="assets/icons/single-collection.svg" alt="single-collection" />
+            </span>
+            <span>
+              Orders
+            </span> 
+          </div>
+
+          <div class="def_coll coll-4">
+            <span>
+              <img src="assets/icons/single-collection.svg" alt="single-collection" />
+            </span>
+            <span>
+              Sales
+            </span> 
+          </div>
+
+          <div class="def_coll coll-5">
+            <span>
+              <img src="assets/icons/single-collection.svg" alt="single-collection" />
+            </span>
+            <span>
+              Products
+            </span>       
+          </div>
+
+          <div class="def_coll coll-6">
+            <span>
+              <img src="assets/icons/single-collection.svg" alt="single-collection" />
+            </span>
+            <span>
+              Employees
+            </span> 
+          </div>
+        </div>
+      </div>
+
+      <dialog class="custom-container">
+        <div class="modal-header ">
+          <h2>Create a Custom Collection</h2>
+          <button class="close-btn" id="close-customize-btn">
+            <img src="assets/icons/close-circle.svg" alt="close-circle">
+          </button>
+        </div>
+        
+        {{!-- <label for="collectionName">Collection Name:</label> --}}
+        <input type="text" id="collectionName" placeholder="Enter collection name" class="coll_name">
+
+        <section class="field_sect">
+          <h3>Fields</h3>
+          <div id="fieldsContainer">
+            <div id="dynamic_fields">
+              <!-- Dynamic Fields will be added here -->
+            </div>
+
+            <div id="fields_explained">
+              <p>Add fields to define the structure of your collection. For example:</p>
+              <ul>
+                <li>Field Name: <strong>title</strong>, Type: <strong>String</strong></li>
+                <li>Field Name: <strong>price</strong>, Type: <strong>Number</strong></li>
+                <li>Field Name: <strong>isAvailable</strong>, Type: <strong>Boolean</strong></li>
+              </ul>
+            </div>
+          </div>
+
+          <button id="addFieldBtn">
+            <img src="assets/icons/add_field.svg" alt="add_field">
+            <span>Add Field</span>
+          </button>
+        </section>
+
+        <button id="createCollectionBtn">Create Collection</button>
+
+        <div id="responseMessage"></div>
+      </dialog>
+    </div>
+  </section>
+</section>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // Modal action
+    const customizeModal = document.querySelector('.custom-container');
+    const openCustomizer = document.querySelector('#open-customize-btn');
+    const closeCustomizer = document.querySelector('#close-customize-btn');
+
+    openCustomizer.addEventListener('click', () => {
+      customizeModal.showModal();
+    })
+    closeCustomizer.addEventListener('click', () => {
+      customizeModal.close();
+    })
+
+    const addFieldBtn = document.getElementById("addFieldBtn");
+    const dynamicFields = document.getElementById("dynamic_fields");
+    const fieldsExplained = document.getElementById("fields_explained");
+    const createCollectionBtn = document.getElementById("createCollectionBtn");
+    const responseMessage = document.getElementById("responseMessage");
+
+    // Field options
+    const fieldTypes = ["String", "Number", "Boolean", "Date", "Object"];
+
+    // Function to toggle visibility of fields_explained and dynamic_fields
+    function toggleFieldsVisibility() {
+      if (dynamicFields.children.length === 0) {
+        fieldsExplained.style.display = "block";
+        dynamicFields.style.display = "none";
+      } else {
+        fieldsExplained.style.display = "none";
+        dynamicFields.style.display = "block";
+      }
+    }
+
+    // Initial visibility check
+    toggleFieldsVisibility();
+
+    // Add a new field dynamically
+    addFieldBtn.addEventListener("click", function () {
+      const fieldGroup = document.createElement("div");
+      fieldGroup.classList.add("field-group");
+
+      // Field name input
+      const fieldName = document.createElement("input");
+      fieldName.type = "text";
+      fieldName.placeholder = "Field Name";
+      fieldGroup.appendChild(fieldName);
+
+      // Field type dropdown
+      const fieldType = document.createElement("select");
+      fieldTypes.forEach(type => {
+        const option = document.createElement("option");
+        option.value = type;
+        option.textContent = type;
+        fieldType.appendChild(option);
+      });
+
+      fieldGroup.appendChild(fieldType);
+
+      // Remove button
+      const removeBtn = document.createElement("button");
+      removeBtn.textContent = "X";
+      removeBtn.classList.add("remove-btn");
+      removeBtn.addEventListener("click", function () {
+        dynamicFields.removeChild(fieldGroup);
+        toggleFieldsVisibility();
+      });
+
+      fieldGroup.appendChild(removeBtn);
+      dynamicFields.appendChild(fieldGroup);
+
+      // Update visibility
+      toggleFieldsVisibility();
+    });
+
+    // Handle Create Collection
+    createCollectionBtn.addEventListener("click", async function () {
+      const collectionName = document.getElementById("collectionName").value.trim();
+      if (!collectionName) {
+        responseMessage.textContent = "Please enter a collection name.";
+        return;
+      }
+
+      // Gather field data
+      const fields = [];
+      document.querySelectorAll(".field-group").forEach(group => {
+        const name = group.querySelector("input").value.trim();
+        const type = group.querySelector("select").value;
+        if (name) fields.push({ name, type });
+      });
+
+      if (fields.length === 0) {
+        responseMessage.textContent = "Please add at least one field.";
+        return;
+      }
+
+      // Send data to backend
+      try {
+        const res = await fetch("/create-collection", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ collectionName, fields }),
+        });
+
+        const data = await res.json();
+        responseMessage.textContent = data.message || "Collection created successfully!";
+      } 
+      catch (error) {
+        console.log(error);
+        responseMessage.textContent = "Error creating collection!";
+      }
+    });
+  });
+</script>
+<script src="js/shared.js"></script>

@@ -27,11 +27,10 @@
     h2{
       font-size: 1.35rem;
       font-weight:  600;
-      color: rgb(100, 98, 98);
-      opacity: .75;
+      color: rgb(101, 194, 248);
       text-align: left;
     }
-    
+
     button{
       width: 32px;
 
@@ -96,6 +95,211 @@
         span:nth-child(2){
           opacity: .9
         }
+      }
+    }
+  }
+}
+
+.data_container{
+  width: 100%;
+  margin-top: 1.25rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+
+  @media(max-width: 780px){
+    grid-template-columns: 1fr;
+  }
+
+  & > div{
+    background-color: white;
+    padding: 1rem .8rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px 2px rgb(215, 214, 214);
+  }
+
+  .visualize_container{
+    h3{
+      font-size: 1.25rem;
+      font-weight: 600;
+      text-align: left;
+      color: rgb(58, 57, 57);
+    }
+    p{
+      font-size: 14px;
+      text-align: left;
+      color: rgb(85, 83, 83);
+      margin-top: 4px;
+
+      @media(max-width: 330px){
+        font-size: 12px;
+      }
+    }
+
+    .charts_container{
+      margin-top: 1rem;
+      border: 1.6px solid hsl(0, 0%, 94%);
+      border-radius: 10px;
+
+      .switch_btns{
+        width: 100%;
+        @include flexbox(start, center, row);
+        margin-top: .5rem;
+        
+        & > div {
+          padding: .25rem .65rem;
+          font-size: 14px;
+          font-weight: 600;
+          color: rgb(108, 174, 245);
+          transition: .25s ease;
+
+          &:hover{ 
+            cursor: pointer;
+            color: rgb(48, 140, 238);
+          }
+        }
+        .current_chart{
+          border-bottom: 3px solid rgb(153, 99, 245);
+          color: rgb(48, 140, 238);
+        }
+      }
+      .chart_switch{
+        @include flexbox(center, center);
+        width: 100%;
+        margin-top: .75rem;
+
+        div{
+          overflow: auto;
+          @include flexbox(center, center);
+
+          img{
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+  .collections_explained {
+    @include flexbox(start, start, column);
+    h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: rgb(58, 57, 57);
+      margin-bottom: 0.5rem;
+      text-align: left;
+    }
+  
+    p {
+      font-size: 14px;
+      color: rgb(85, 83, 83);
+      text-align: left;
+      line-height: 1.4;
+  
+      @media (max-width: 330px) {
+        font-size: 12px;
+      }
+    }
+  
+    .default_collections {
+      margin-top: 1rem;
+      border: 1.6px dashed hsl(0, 0%, 89%);
+      border-radius: 10px;
+      padding: 0.7rem 0.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      transition: .25s ease;
+
+      &:hover{
+        border: 1.6px dashed rgb(108, 174, 245);
+      }
+  
+      .about_head {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+  
+        span:first-child {
+          font-size: 14px;
+          color: rgb(108, 174, 245);
+          font-weight: 600;
+        }
+  
+        span:last-child img {
+          width: 22px;
+          cursor: pointer;
+        }
+      }
+  
+      .about_body {
+        margin-top: 0.75rem;
+        font-size: 14px;
+        color: rgb(90, 90, 90);
+        text-align: left;
+        line-height: 1.8;
+        background-color: hsl(0, 0%, 98%);
+        padding: 1rem;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      
+        p {
+          font-weight: 500;
+          margin-bottom: 0.5rem;
+          color: rgb(80, 80, 80);
+        }
+      
+        ul {
+          list-style: disc;
+          padding-left: 1.5rem;
+      
+          li {
+            margin-bottom: 0.25rem;
+            color: rgb(70, 70, 70);
+          }
+      
+          li:last-child {
+            margin-bottom: 0;
+          }
+        }
+      
+        @media (max-width: 330px) {
+          font-size: 12px;
+          padding: 0.75rem;
+        }
+      }      
+    }
+  }
+  .proceed_box{
+    margin-top: auto;
+    width: 100%;
+    @include flexbox(center, center);
+
+    a{ 
+      margin: 0 auto;
+      padding: .5rem;
+      width: 100%;
+      background-color: rgb(36, 36, 36);
+      border: 1.6px solid rgb(36, 36, 36);
+      color: white;
+      border-radius: 10px;
+      font-size: 1rem;
+      font-weight: 600;
+      transition: .25s ease;
+      text-align: center;
+
+      &:hover{
+        color: rgb(36, 36, 36);
+        background-color: rgb(214, 211, 211);
+      }
+
+      @media(max-width: 600px){
+        font-size: 14px;
+        padding: .4rem;
+      }
+      @media(max-width: 330px){
+        font-size: 12px;
       }
     }
   }

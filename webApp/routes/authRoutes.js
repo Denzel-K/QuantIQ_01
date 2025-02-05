@@ -36,6 +36,7 @@ router.get ("/esg_metrics", verifyToken, loadPages.esg_metrics);
 router.get ("/sentiment_analysis", verifyToken, loadPages.sentiment_analysis);
 router.get ("/account_management", verifyToken, loadPages.account_management);
 router.get ("/files", verifyToken, loadPages.files);
+router.get ("/collections", verifyToken, loadPages.collections);
 router.get ("/settings", verifyToken, loadPages.settings);
 router.get ("/analytics", verifyToken, loadPages.analytics);
 

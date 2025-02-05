@@ -7,84 +7,112 @@
     <div class="dynamic_body">
       {{!-- Your sections and divs go here --}}
 
-      <div class="p-4">
-
+      <div class="p-2 ">
         <div class="flex flex-col w-full">
-
           <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 md:grid-cols-2 gap-2">
-            <div class="h-32 rounded-lg bg-white shadow-md w-full sm:w-auto bg-purple-00">
+            <div class="h-32 rounded-lg bg-white shadow-md w-full sm:w-auto bg-purple-00 py-2 px-2">
               <div class="w-32">
-                <h3 class="text-md font-semibold p-1.5">Total Orders</h3>
+                <h3 class="text-md font-semibold p-1.5 opacity-70">Total Orders</h3>
               </div>
+
               <div class="">
-                <p class="pl-2.5 text-3xl font-bold">5,399</p>
+                <p class="pl-2.5 text-3xl font-bold opacity-70">5,399</p>
               </div>
+
               <div class="flex flex-row gap-4 mt-2">
-              <img src="assets/icons/up.png" alt="reset" class="w-8">
-              <p class="font-semibold">0.5% vs last month</p>
+                <img src="assets/icons/up.png" alt="reset" class="w-8">
+                <p class="font-semibold opacity-70">0.5% vs last month</p>
               </div>
             </div>
 
-            <div class="h-32 rounded-lg bg-white w-full sm:w-auto bg-purple-00">
+            <div class="h-32 rounded-lg bg-white shadow-md w-full sm:w-auto bg-purple-00 py-2 px-2">
               <div class="w-full">
-                <h3 class="text-md font-semibold p-1.5">Total Sales</h3>
+                <h3 class="text-md font-semibold p-1.5 opacity-70">Total Sales</h3>
               </div>
-              <p class="pl-2.5 text-3xl font-bold">5,250</p>
+              <p class="pl-2.5 text-3xl font-bold opacity-70">5,250</p>
               <div class="flex flex-row gap-4 mt-2">
                 <img src="assets/icons/decrease.png" alt="reset" class="w-6">
-                <p class="font-semibold">0.2% vs last month</p>
+                <p class="font-semibold opacity-70">0.2% vs last month</p>
               </div>
 
             </div>
 
-            <div class="h-32 rounded-lg bg-white shadow-md w-full md:w-full sm:w-auto bg-purple-00">
+            <div class="h-32 rounded-lg bg-white shadow-md w-full md:w-full sm:w-auto bg-purple-00 py-2 px-2">
               <div>
-                <h3 class="text-md font-semibold p-1.5">Net Revenue</h3>
+                <h3 class="text-md font-semibold p-1.5 opacity-70">Net Revenue</h3>
               </div>
               <div>
-                <p class="pl-2.5 text-3xl font-bold">$3500</p>
+                <p class="pl-2.5 text-3xl font-bold opacity-70">$3500</p>
               </div>
               <div class="flex flex-row gap-4 mt-2">
                 <img src="assets/icons/up.png" alt="reset" class="w-8">
-                <p class="font-semibold">12% vs last month</p>
+                <p class="font-semibold opacity-70">12% vs last month</p>
               </div>
             </div>
 
-            <div class="h-32 rounded-lg bg-white shadow-md w-full md:w-full sm:w-auto bg-purple-00">
+            <div class="h-32 rounded-lg bg-white shadow-md w-full md:w-full sm:w-auto bg-purple-00 py-2 px-2">
               <div>
-                <h3 class="text-md font-semibold p-1.5">New Orders</h3>
+                <h3 class="text-md font-semibold p-1.5 opacity-70">New Orders</h3>
               </div>
               <div>
-                <p class="pl-2.5 text-3xl font-bold">45</p>
+                <p class="pl-2.5 text-3xl font-bold opacity-70">45</p>
               </div>
               <div class="flex flex-row gap-4 mt-2">
                 <img src="assets/icons/up.png" alt="reset" class="w-8">
-                <p class="font-semibold">0.2% vs last month</p>
+                <p class="font-semibold opacity-70">0.2% vs last month</p>
               </div>
             </div>
           </div>
 
-          <div class="flex flex-col md:flex-row gap-4 mt-4 lg:flex-row">
-            <div class=" w-full md:w-7/12 h-64">
-              <img src="assets/barchart.png" class="h-64 w-full" alt="">
-            </div> 
+          <div class="data_container">
+            <div class="visualize_container">
+              <h3>Visualize your data</h3>
+              <p>Use dynamic, live charts to visualize your data.</p>
 
-            <div class="flex flex-col gap-3 w-full md:w-5/12 lg:w-5/12 h-64">
-              <div class="flex flex-row h-1/2 gap-3">
-                <div class="w-7/12 flex flex-col bg-white">
-                  <img src="assets/icons/group.png" alt="reset" class="w-12 pl-4">
-                  <p class="pl-4 text-md font-semibold">New Customers</p>
-                  <p class="pl-4 font-bold text-lg">400 <span class="text-red-800 text-sm">-5%</span></p>
-                  <p class="pl-4 text-sm">Last Week</p>
+              <div class="charts_container">
+                <div class="switch_btns">
+                  <div class="switch_1 current_chart">Bar</div>
+                  <div class="switch_2">Line</div>
+                  <div class="switch_3">Bar/line</div>
+                  <div class="switch_4">Bubble</div>
+                  <div class="switch_5">DrawTime</div>
                 </div>
-                <div class="w-7/12 border-2 border-black"></div>
+
+                <div class="chart_switch">
+                  <div class="chart_1"><img src="assets/Bar-chart.png" alt="chart"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="collections_explained">
+              <h3>Manage your collections</h3>
+              <p>Collections allow you to manage(Create, Read, Update & Delete) data effectively.</p>
+
+              <div class="default_collections">
+                <div class="about_head">
+                  <span>About default collections</span>
+                  <span>
+                    <img src="assets/icons/information.svg" alt="info">
+                  </span>
+                </div>
+
+                <div class="about_body">
+                  <p>Default collections offer several benefits:</p>
+                  <ul>
+                    <li>Pre-configured databases for faster setup.</li>
+                    <li>Structured organization of data to ensure consistency.</li>
+                    <li>Streamlined workflow for managing, analyzing, and visualizing data.</li>
+                    <li>Customizable to suit your specific needs and preferences.</li>
+                  </ul>
+                </div>
               </div>
 
-              <div class="w-full h-1/2">
-                <img src="assets/linechart.png" alt="reset" class="w-full h-full pl-4 pt-2 pr-4 bg-purple-00">
+              <div class="proceed_box">
+                <a href="/collections" class="start_process">
+                 Proceed to collections
+                </a>
               </div>
-            </div> 
-            
+            </div>
           </div>
 
           <div class="flex flex-col md:flex-row lg:flex-row gap-4 mt-4">
@@ -162,11 +190,78 @@
               <div class="w-full md:w-5/12 lg:w-7/12 border-2 border-black rounded-lg h-full"></div>
             </div>
           </div>
-        </div>
-        
+        </div>       
       </div>
     </div>
   </section>
 </section>
 
 <script src="js/shared.js"></script>
+<script>
+  const chart_switch = document.querySelector('.chart_switch');
+  const switch_1 = document.querySelector('.switch_1');
+  const switch_2 = document.querySelector('.switch_2');
+  const switch_3 = document.querySelector('.switch_3');
+  const switch_4 = document.querySelector('.switch_4');
+  const switch_5 = document.querySelector('.switch_5');
+
+  switch_1.addEventListener('click', () => {
+    chart_switch.innerHTML = `
+      <div class="chart_1"><img src="assets/Bar-chart.png" alt="chart"></div>
+    `;
+    
+    switch_1.classList.add('current_chart');
+    switch_2.classList.remove('current_chart');
+    switch_3.classList.remove('current_chart');
+    switch_4.classList.remove('current_chart');
+    switch_5.classList.remove('current_chart');
+  });
+
+  switch_2.addEventListener('click', () => {
+    chart_switch.innerHTML = `
+      <div class="chart_2"><img src="assets/Line-chart.png" alt="chart"></div>
+    `;
+
+    switch_2.classList.add('current_chart');
+    switch_1.classList.remove('current_chart');
+    switch_3.classList.remove('current_chart');
+    switch_4.classList.remove('current_chart');
+    switch_5.classList.remove('current_chart');
+  });
+
+  switch_3.addEventListener('click', () => {
+    chart_switch.innerHTML = `
+      <div class="chart_3"><img src="assets/Bar-line-combo.png" alt="chart"></div>
+    `;
+
+    switch_3.classList.add('current_chart');
+    switch_2.classList.remove('current_chart');
+    switch_1.classList.remove('current_chart');
+    switch_4.classList.remove('current_chart');
+    switch_5.classList.remove('current_chart');
+  });
+
+  switch_4.addEventListener('click', () => {
+    chart_switch.innerHTML = `
+      <div class="chart_4"><img src="assets/Bubble-chart.png" alt="chart"></div>
+    `;
+
+    switch_4.classList.add('current_chart');
+    switch_2.classList.remove('current_chart');
+    switch_3.classList.remove('current_chart');
+    switch_1.classList.remove('current_chart');
+    switch_5.classList.remove('current_chart');
+  });
+
+  switch_5.addEventListener('click', () => {
+    chart_switch.innerHTML = `
+      <div class="chart_5"><img src="assets/Smooth-line-chart-drawtime.png" alt="chart"></div>
+    `;
+    
+    switch_5.classList.add('current_chart');
+    switch_2.classList.remove('current_chart');
+    switch_3.classList.remove('current_chart');
+    switch_4.classList.remove('current_chart');
+    switch_1.classList.remove('current_chart');
+  });
+</script>
