@@ -338,6 +338,7 @@
 
   .detail_body{
     margin-top: 1rem;
+    width: 100%;
     
     .collection_schema{
 
@@ -349,6 +350,9 @@
       .processing_method{
 
       }
+    }
+    .hidden{
+      display: none;
     }
   }
 }
