@@ -55,7 +55,7 @@ app.set('view engine', '.hbs');
 app.set('views', path.join(__dirname, 'views'));
 
 app.use("/ai", aiRoutes);  // Add AI routes
-app.listen(3000, () => console.log("Server running on port 3000"));
+
 
 // Middleware
 app.use(morgan("dev"));

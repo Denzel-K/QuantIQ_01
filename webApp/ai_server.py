@@ -5,8 +5,8 @@ app = Flask(__name__)
 
 # Connect to MongoDB
 client = pymongo.MongoClient("mongodb://localhost:27017/")
-db = client["quantico_db"]
-collection = db["financial_data"]  # Adjust based on your dataset
+db = client["quant_saas"]
+collection = db["clients"]  # Adjust based on your dataset
 
 @app.route('/process', methods=['GET'])
 def process_data():
