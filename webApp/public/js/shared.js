@@ -5,7 +5,6 @@ toggler.addEventListener('click', () => {
   document.querySelector('.skeleton').classList.toggle('active');
 })
 
-
 // Dropdown
 const dropdownBtn = document.querySelector(".dropdown-btn");
 const pBoxReveal = document.querySelector(".p-box-reveal");

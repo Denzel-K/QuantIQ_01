@@ -22,7 +22,7 @@
               <img src="assets/icons/single-collection.svg" alt="single-collection" />
             </span>
             <span>
-              {{this}}
+              {{capitalizeFirst this}}
             </span>
           </div>
           {{/each}}
@@ -32,8 +32,8 @@
       <section class="collection_details">
         <div class="detail_head">
           <span id="collection_title">Orders</span>
-          <button class="generate">
-            Generate table
+          <button class="insert_data">
+            Insert data
           </button>
         </div>
 
@@ -82,6 +82,8 @@
 
         <div id="responseMessage"></div>
       </dialog>
+
+      {{>data_ingestion}}
     </div>
   </section>
 </section>
@@ -199,20 +201,37 @@
       }
     });
 
+    // open data processing box
+    const insertData = document.querySelector('.insert_data');
+    insertData.addEventListener('click', ()=> {
+      insertData.classList.toggle('remove_state');
+      document.querySelector('.data_processing').classList.toggle('visible_process_box');
+    });
+
     // schema switching
     const collectionButtons = document.querySelectorAll(".default_colls .def_coll");
     const tableTitle = document.getElementById("collection-title");
     const tableBody = document.querySelector("#collection-table tbody");
     const windowTitle = document.querySelector('#collection_title');
+
+    function capitalizeFirstLetter(str) {
+      return str.charAt(0).toUpperCase() + str.slice(1);
+    }
+
     const schemas = JSON.parse('{{{schemas}}}');
-    console.log(schemas);
+    //console.log(schemas);
 
     collectionButtons.forEach((button) => {
       button.addEventListener("click", () => {
+        // Remove the 'curr_coll' class from all buttons
+        collectionButtons.forEach((btn) => btn.classList.remove("curr_coll"));
+
+        // Add the 'curr_coll' class to the clicked button
+        button.classList.add("curr_coll");
+
         const collectionName = button.dataset.table;
-        windowTitle.textContent = collectionName;
+        windowTitle.textContent = capitalizeFirstLetter(collectionName);
         const schema = schemas[collectionName];
-        // console.log(schema);
 
         if (schema) {
           tableTitle.textContent = `Structure of "${collectionName}"`;
@@ -240,6 +259,8 @@
     });
 
   });
+
 </script>
 
 <script src="js/shared.js"></script>
+<script src="js/fileUpload.js"></script>

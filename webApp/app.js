@@ -38,12 +38,10 @@ const handlebars = hbs.create({
     // JSON stringifying helper
     json: (context) => JSON.stringify(context),
 
-    // Check if user has claimed a food item
-    checkClaimed: async (userId, foodId) => {
-      const sql = 'SELECT * FROM claimed_items WHERE user_id = ? AND food_id = ?';
-      const [result] = await db.promise().query(sql, [userId, foodId]);
-
-      return result.length > 0;
+    // Capitalize first letter
+    capitalizeFirst: (str) => {
+      if (typeof str !== 'string' || str.length === 0) return '';
+      return str.charAt(0).toUpperCase() + str.slice(1);
     }
   },
   extname: '.hbs',
