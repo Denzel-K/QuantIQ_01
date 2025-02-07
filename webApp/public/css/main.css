@@ -1298,6 +1298,38 @@ body {
   margin-top: 1rem;
   width: 100%;
 }
+.collection_details .detail_body .inactive_collection .collection_structure {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+.collection_details .detail_body .inactive_collection .collection_structure h2 {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+.collection_details .detail_body .inactive_collection .collection_structure table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.collection_details .detail_body .inactive_collection .collection_structure table th, .collection_details .detail_body .inactive_collection .collection_structure table td {
+  text-align: left;
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+.collection_details .detail_body .inactive_collection .collection_structure table th {
+  background-color: #f0f0f0;
+  font-weight: bold;
+}
+.collection_details .detail_body .inactive_collection .collection_structure table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+.collection_details .detail_body .inactive_collection .collection_structure table tr:hover {
+  background-color: #f1f1f1;
+}
 .collection_details .detail_body .hidden {
   display: none;
 }

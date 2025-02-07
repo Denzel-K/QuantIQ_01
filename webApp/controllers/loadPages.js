@@ -1,3 +1,5 @@
+const mongoose = require('mongoose');
+
 module.exports.landingPage = (req, res) => {
   res.render('landingpage', {pageTitle: "Landing Page"});
 }
@@ -126,18 +128,35 @@ module.exports.files = (req, res) => {
   });
 };
 
-module.exports.collections = (req, res) => {
-  const { _id, companyName, companyEmail, databaseName } = req.user;
+module.exports.collections = async (req, res) => {
+  const { databaseName } = req.user;
 
-  res.render('collections', { 
-    pageTitle: "Collections",
-    clientCredentials: {
-      id: _id,
-      companyName,
-      companyEmail,
-      databaseName
-    }
-  });
+  try {
+    // Connect to the client's database
+    const db = mongoose.connection.useDb(databaseName);
+
+    // Fetch all collection names
+    const collections = await db.db.listCollections().toArray();
+    const collectionNames = collections.map((col) => col.name);
+
+    // Fetch schema for each collection
+    const schemas = {};
+    collectionNames.forEach((collectionName) => {
+      const model = db.model(collectionName); // Get the model for each collection
+      schemas[collectionName] = Object.keys(model.schema.paths); // Extract schema keys
+    });
+
+    // Render the collections page with collection names and their schemas
+    res.render('collections', {
+      pageTitle: 'Collections',
+      collections: collectionNames,
+      schemas,
+      clientCredentials: req.user
+    });
+  } catch (error) {
+    console.error('Error fetching collections:', error);
+    res.status(500).json({ error: 'Failed to load collections and schemas' });
+  }
 };
 
 module.exports.settings = (req, res) => {
@@ -154,16 +173,62 @@ module.exports.settings = (req, res) => {
   });
 };
 
-module.exports.analytics = (req, res) => {
-  const { _id, companyName, companyEmail, databaseName } = req.user;
+const {
+  inventorySchema,
+  ordersSchema,
+  salesSchema,
+  employeesSchema,
+  customersSchema,
+  productsSchema
+} = require('../models/defaults');
 
-  res.render('analytics', { 
-    pageTitle: "Analytics",
-    clientCredentials: {
-      id: _id,
-      companyName,
-      companyEmail,
-      databaseName
-    }
-  });
+
+module.exports.analytics = async (req, res) => {
+  const { databaseName } = req.user;
+
+  try {
+    const db = mongoose.connection.useDb(databaseName);
+
+    const schemaMap = {
+      inventories: inventorySchema,
+      orders: ordersSchema,
+      sales: salesSchema,
+      employees: employeesSchema,
+      customers: customersSchema,
+      products: productsSchema,
+    };
+
+    const collections = await db.db.listCollections().toArray();
+    const collectionNames = collections.map((col) => col.name);
+
+    const schemas = {};
+    collectionNames.forEach((collectionName) => {
+      const collectionNameLower = collectionName.toLowerCase();
+      if (!db.models[collectionName]) {
+        if (schemaMap[collectionNameLower]) {
+          db.model(collectionName, schemaMap[collectionNameLower]);
+        } else {
+          console.warn(`No schema found for collection: ${collectionName}`);
+          return;
+        }
+      }
+      const model = db.model(collectionName);
+      schemas[collectionName] = Object.entries(model.schema.paths)
+        .filter(([key]) => key !== '_id' && key !== '__v') // Filter out _id and __v
+        .map(([key, value]) => ({
+          name: key,
+          type: value.instance,
+        }));
+    });
+
+    res.render('analytics', {
+      pageTitle: 'Analytics',
+      collections: collectionNames,
+      schemas: JSON.stringify(schemas).replace(/</g, '\\u003c'),
+      clientCredentials: req.user,
+    });
+  } catch (error) {
+    console.error('Error fetching collections:', error);
+    res.status(500).json({ error: 'Failed to load collections and schemas' });
+  }
 };
